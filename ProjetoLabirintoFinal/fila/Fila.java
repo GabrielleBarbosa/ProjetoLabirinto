@@ -12,10 +12,22 @@ Nela encontramos métodos para adicionar, apagar e ver elementos de uma fila.
 */
 public class Fila<X> implements Cloneable
 {
-	    private Object[] vetor;
-	    private int qtd = 0;
-	    private int inicio = 0;
-	    private int fim = 0;
+	/**
+	Vetor que armazena classes(Object) na pilha.
+	*/
+	private Object[] vetor;
+	/**
+	Variável que armazena quantidade de elementos no vetor.
+    */
+	private int qtd = 0;
+	/**
+	Variável que marca o início da fila.
+    */
+	private int inicio = 0;
+	/**
+	Variável que marca o fim da fila.
+    */
+	private int fim = 0;
 
 /**
 	Construtor da classe Fila.

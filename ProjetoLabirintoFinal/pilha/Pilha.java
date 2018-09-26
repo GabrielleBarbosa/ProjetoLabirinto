@@ -12,7 +12,13 @@ Nela encontramos métodos para adicionar, jogar fora e consultar o último eleme
 */
 public class Pilha<X> implements Cloneable
 {
+	/**
+	Vetor que armazena classes(Object) na pilha.
+	*/
     protected Object[] vetor;
+    /**
+    Variável que armazena quantidade de elementos no vetor.
+    */
     protected int qtd = 0;
 
 /**

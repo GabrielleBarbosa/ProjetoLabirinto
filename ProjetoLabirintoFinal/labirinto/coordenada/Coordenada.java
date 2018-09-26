@@ -10,7 +10,13 @@ Nela encontramos métodos para criar, mudar e ver a coordenada.
 */
 public class Coordenada implements Cloneable
 {
+	/**
+	Variável inteira que armazena x da coordenada.
+	*/
 	protected int x;
+	/**
+	Variável inteira que armazena y da coordenada.
+	*/
 	protected int y;
 
 /**

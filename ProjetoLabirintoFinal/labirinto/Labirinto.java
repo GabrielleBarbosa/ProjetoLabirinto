@@ -18,12 +18,33 @@ Nela encontramos métodos para ler arquivo de labirinto, percorrê-lo, retroceder 
 */
 public class Labirinto
 {
+	/**
+	variável que armazena o labirinto em forma de matriz.
+	*/
 	protected char[][] labirinto;
+	/**
+	variável que armazena a posição no labirinto.
+	*/
 	protected Coordenada atual;
+	/**
+	variável do tipo Pilha<Coordenada> que armazena o caminho percorrido.
+	*/
 	protected Pilha<Coordenada> caminho;
-	protected Pilha<Fila<Coordenada>> possibilidades;
+	/**
+	variável do tipo Fila<Coordenada> que armazena as possibilidades a partir da atual.
+	*/
 	protected Fila<Coordenada> fila;
+	/**
+	variável do tipo Pilha<Fila<Coordenada>> que armazena os valores da variável fila.
+	*/
+	protected Pilha<Fila<Coordenada>> possibilidades;
+	/**
+	variável inteira que armazena o número de linhas do labirinto.
+	*/
 	protected int linhas;
+	/**
+	variável inteira que armazena o número de colunas do labirinto.
+	*/
 	protected int colunas;
 
     /**
