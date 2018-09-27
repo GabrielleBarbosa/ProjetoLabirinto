@@ -11,10 +11,16 @@ public class Programa
 		{
 			System.out.println("Bom Dia/Noite professor ");
 			System.out.println("Nos arquivos do projeto, temos três labirintos prontos para testes caso queira  utilizá-los");
-			System.out.print("Digite o nome do arquivo de labirinto: ");
 
-			BufferedReader teclado = new BufferedReader (new InputStreamReader(System.in));
-			String arquivo = teclado.readLine();
+			String arquivo = "";
+
+			while(arquivo == null || arquivo == "" || !(new File(arquivo).exists()))
+			{
+				System.out.print("Digite o nome do arquivo de labirinto: ");
+
+				BufferedReader teclado = new BufferedReader (new InputStreamReader(System.in));
+				arquivo = teclado.readLine();
+		    }
 
 			Labirinto labirinto = new Labirinto(arquivo);
 
