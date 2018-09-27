@@ -15,19 +15,19 @@ public class Fila<X> implements Cloneable
 	/**
 	Vetor que armazena classes(Object) na pilha.
 	*/
-	private Object[] vetor;
+	protected Object[] vetor;
 	/**
 	Variável que armazena quantidade de elementos no vetor.
     */
-	private int qtd = 0;
+	protected int qtd = 0;
 	/**
 	Variável que marca o início da fila.
     */
-	private int inicio = 0;
+	protected int inicio = 0;
 	/**
 	Variável que marca o fim da fila.
     */
-	private int fim = 0;
+	protected int fim = 0;
 
 /**
 	Construtor da classe Fila.
@@ -49,7 +49,7 @@ public class Fila<X> implements Cloneable
 	@param objeto da classe da instância da Fila.
 	@return retorna objeto clonado da classe X.
 */
-		private X meuCloneDeX(X x)
+		protected X meuCloneDeX(X x)
 		{
 			X ret = null;
 			try

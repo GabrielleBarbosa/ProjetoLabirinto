@@ -41,7 +41,7 @@ public class Pilha<X> implements Cloneable
 	@param objeto da classe da instância da Pilha.
 	@return retorna objeto clonado da classe X.
 */
-	private X meuCloneDeX(X x)
+	protected X meuCloneDeX(X x)
 	{
 		X ret = null;
 		try
