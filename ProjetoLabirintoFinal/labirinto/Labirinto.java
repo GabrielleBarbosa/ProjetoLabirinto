@@ -12,7 +12,7 @@ A classe Labirinto representa uma forma de se percorrer um labirinto, pegando-o
 de um arquivo texto, procurando uma entrada e uma saída.
 
 Instâncias desta classe permitem uma forma de se sair de qualquer labirinto (no formato correto).
-Nela encontramos métodos para ler arquivo de labirinto, percorrê-lo, retroceder e fornecer labirinto em String.
+Nela encontramos métodos para ler arquivo de labirinto, percorrê-lo, voltar e fornecer labirinto em String.
 @authors Felipe Melchior de Britto e Gabrielle da Silva Barbosa.
 @since 2018.
 */
@@ -126,6 +126,9 @@ public class Labirinto
 		if(atual == null)
 			throw new Exception("Não há como andar sem ter um ponto de início(procure a entrada primeiro)!");
 
+		if(achouFim())
+			throw new Exception("A saída do labirinto já foi encontrada");
+
 		this.fila = new Fila<Coordenada>(3);
 		int x = this.atual.getX();
 		int y = this.atual.getY();
@@ -148,7 +151,7 @@ public class Labirinto
 
 
 		while(this.fila.isVazia())
-			retroceder();
+			voltar();
 
 		this.atual.setCoordenada(this.fila.getUmItem());
 		this.fila.jogueForaUmItem();
@@ -168,7 +171,7 @@ public class Labirinto
 	    @throws Exception se a Pilha<Fila<Coordenada>> possibilidades estiver vazia,
 	    significa que não há mais caminhos para percorrer e achar a saída.
     */
-	private void retroceder() throws Exception
+	private void voltar() throws Exception
 	{
 		if(this.possibilidades.isVazia())
 		   throw new Exception("Anta!!! Não há caminhos");
@@ -184,6 +187,8 @@ public class Labirinto
 	/**
 	    Verifica se a posição(coordenada) atual possui o caracter 'S', se tiver significa que a
 	    saída foi encontrada.
+
+	    @return true ou false se a saída foi encontrada.
     */
 	public Boolean achouFim()
 	{
@@ -201,11 +206,14 @@ public class Labirinto
 	    correta e retornando inverso.
 
 	    @param arquivo arquivo de labirinto a ser lido.
-	    @throws Exception as variáveis instanciadas tem métodos que lançam excessão e
-	    o arquivo passado por parâmetro pode não existir.
+	    @throws Exception o caminho será desempilhado nesse método, então isso só pode acontecer
+	    se já tiver achado o fim e a variável instanciadas tem métodos que lançam excessão.
     */
 	public Pilha<Coordenada> caminhoPercorrido() throws Exception
 	{
+		if(!achouFim())
+		   throw new Exception("O fim ainda não foi encontrado para se mostrar o caminho");
+
 		Pilha<Coordenada> inverso = new Pilha<Coordenada> (colunas*linhas);
 
 		while(!caminho.isVazia())
