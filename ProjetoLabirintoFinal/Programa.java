@@ -29,16 +29,26 @@ public class Programa
 			while(!labirinto.achouFim())
 				labirinto.andar();
 
-            System.out.println(labirinto.toString());
+            //System.out.println(labirinto.toString());
 
-            System.out.println("\nO caminho agora será mostrado: ");
+
+            PrintStream resultado = new PrintStream(arquivo+".res.txt");
+            resultado.print(labirinto);
+            resultado.println();
+            resultado.println("Caminho percorrido: ");
 
 			Pilha<Coordenada> caminho = labirinto.caminhoPercorrido();
 			while(!caminho.isVazia())
 			{
-				System.out.println(caminho.getUmItem()+"");
+				resultado.println(caminho.getUmItem());
 				caminho.jogueForaUmItem();
 			}
+
+			resultado.close();
+
+            System.out.println("O labirinto e o caminho percorrido estão gravados em " + arquivo + ".res.txt");
+
+
 	    }
 	    catch(Exception erro)
 	    {System.out.print(erro.getMessage());}

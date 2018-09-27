@@ -54,11 +54,11 @@ public class Labirinto
 
     @param arquivo arquivo de labirinto a ser lido.
     @throws Exception as variáveis instanciadas tem métodos que lançam excessão e
-    o arquivo passado por parâmetro pode não existir.
+    o arquivo passado por parâmetro pode não existir, estar null ou vazio.
     */
 	public Labirinto(String arquivo) throws Exception
 	{
-		if(!new File(arquivo).exists())
+		if(arquivo == null || arquivo == "" || !(new File(arquivo).exists()))
 		   throw new Exception("O arquivo de leitura de labirinto fornecido não existe");
 
 		FileReader arq = new FileReader(arquivo);
@@ -274,7 +274,7 @@ public class Labirinto
 			for(int y1=0; y1<this.colunas; y1++)
 				linhasMatriz += this.labirinto[x1][y1] + "";
 
-			linhasMatriz += "\n";
+			linhasMatriz += "\r";
 	    }
 
 		return linhasMatriz;
