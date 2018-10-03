@@ -10,7 +10,6 @@ public class Programa
 		try
 		{
 			System.out.println("Bom Dia/Noite professor ");
-			System.out.println("Nos arquivos do projeto, temos três labirintos prontos para testes caso queira  utilizá-los");
 
 			String arquivo = "";
 
@@ -32,7 +31,7 @@ public class Programa
             //System.out.println(labirinto.toString());
 
 
-            PrintStream resultado = new PrintStream(arquivo+".res.txt");
+            PrintWriter resultado = new PrintWriter(new File(arquivo+".res.txt"));
             resultado.print(labirinto);
             resultado.println();
             resultado.println("Caminho percorrido: ");

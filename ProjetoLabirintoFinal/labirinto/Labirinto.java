@@ -119,7 +119,8 @@ public class Labirinto
     Dá um passo no labirinto, caso não houver mais um caminho possível, entra-se no
     método privado retorceder que volta até haver um outro caminho possível.
 
-    @throws Exception atual não pode ser usado antes de ser instanciado (método de achar a Entrada).
+    @throws Exception atual não pode ser usado antes de ser instanciado (método de achar a Entrada) e
+    não pode ser usado o método se já achou o fim.
     */
 	public void andar() throws Exception
 	{
@@ -151,7 +152,10 @@ public class Labirinto
 
 
 		while(this.fila.isVazia())
+		{
 			voltar();
+			labirinto[atual.getX()][atual.getY()] = ' ';
+		}
 
 		this.atual.setCoordenada(this.fila.getUmItem());
 		this.fila.jogueForaUmItem();
@@ -205,7 +209,6 @@ public class Labirinto
 	    Desempilha a pilha de coordenadas caminho em inverso, deixando na ordem
 	    correta e retornando inverso.
 
-	    @param arquivo arquivo de labirinto a ser lido.
 	    @throws Exception o caminho será desempilhado nesse método, então isso só pode acontecer
 	    se já tiver achado o fim e a variável instanciadas tem métodos que lançam excessão.
     */
@@ -274,7 +277,7 @@ public class Labirinto
 			for(int y1=0; y1<this.colunas; y1++)
 				linhasMatriz += this.labirinto[x1][y1] + "";
 
-			linhasMatriz += "\r";
+			linhasMatriz += "\r\n";
 	    }
 
 		return linhasMatriz;
@@ -302,4 +305,54 @@ public class Labirinto
 
 		return ret;
 	}
+
+	/**
+		Construtor de cópia da classe Labirinto.
+
+		@param de mesma classe da Labirinto que serve para copiá-lo.
+		@throws Exception se o modelo fornecido para cópia for null.
+	*/
+		public Labirinto (Labirinto modelo) throws Exception
+		{
+			if(modelo == null)
+				throw new Exception("Modelo ausente");
+
+			this.linhas = modelo.linhas;
+
+			this.colunas = modelo.colunas;
+
+			this.labirinto = new char[modelo.linhas][modelo.colunas];
+
+			for(int x=0; x<modelo.linhas; x++)
+				for(int y=0; y<modelo.colunas; y++)
+					this.labirinto[x][y] = modelo.labirinto[x][y];
+
+			this.caminho = modelo.caminho;
+
+			this.possibilidades = modelo.possibilidades;
+
+			this.fila = modelo.fila;
+
+			this.atual = modelo.atual;
+		}
+
+	/**
+		Clone da classe; utiliza construtor de cópia para
+		copiar o objeto, para que este não possa ser alterado
+		em outras classes.
+
+		@return objeto copiado.
+	*/
+		public Object clone()
+		{
+			Labirinto ret = null;
+			try
+			{
+				ret = new Labirinto(this);
+			}
+			catch(Exception erro)
+			{}
+
+			return ret;
+		}
 }
