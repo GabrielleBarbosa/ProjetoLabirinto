@@ -1,0 +1,10 @@
+Quando aperta 'sair', se tem 3 pessoas na sala funciona, se tem 2 n funciona.
+
+
+O sair não manda que saiu da sala quando tem duas pessoas, só quando tem duas
+
+Na terceira pessoa, o combobox de usuarios pra conversar ta multiplicando
+
+A conversa privada n ta funcionando ainda
+
+E falta o banco de dados do Chris
